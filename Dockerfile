@@ -7,6 +7,8 @@
 FROM python:3.7-slim-stretch
 LABEL maintainer="Puckel_"
 
+USER root
+
 # Never prompts the user for choices on installation/configuration of packages
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
