@@ -167,8 +167,8 @@ RUN set -eux; \
 ENV EMBULK_VERSION 0.9.7
 RUN	curl --create-dirs -o ~/.embulk/bin/embulk -L "https://dl.embulk.org/embulk-latest.jar" && \
 	chmod +x ~/.embulk/bin/embulk && \
-	echo 'export PATH="$HOME/.embulk/bin:$PATH"' >> ~/.bashrc && \
-	source ~/.bashrc
+	echo 'export PATH="$HOME/.embulk/bin:$PATH"' >> ~/.bashrc
+	# source ~/.bashrc
 
 
 COPY script/entrypoint.sh /entrypoint.sh
