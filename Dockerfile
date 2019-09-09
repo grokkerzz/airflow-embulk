@@ -165,8 +165,8 @@ RUN set -eux; \
 
 # Install Embulk
 ENV EMBULK_VERSION 0.9.7
-RUN apt-get update -y && \
-	apt-get install apktool -y
+RUN apt-get update -y
+RUN apt-get install apktool -y
 
 
 COPY script/entrypoint.sh /entrypoint.sh
