@@ -71,7 +71,9 @@ RUN set -ex \
         /usr/share/doc-base
 
 # Install java:
-RUN apt-get install wget -y
+RUN apt-get update && apt-get install -y gnupg2 && \
+    apt-get install wget
+	
 RUN set -eux; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
