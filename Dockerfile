@@ -166,7 +166,7 @@ RUN set -eux; \
 # Install Embulk
 ENV EMBULK_VERSION 0.9.7
 RUN apt-get update -y
-RUN apt-get install apktool -y
+# RUN apt-get install apktool -y
 
 
 COPY script/entrypoint.sh /entrypoint.sh
@@ -177,7 +177,7 @@ RUN chmod +x /entrypoint.sh
 
 EXPOSE 8080 5555 8793
 
-USER airflow
+# USER airflow
 WORKDIR ${AIRFLOW_USER_HOME}
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["webserver"] # set default arg for entrypoint
