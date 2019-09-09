@@ -80,6 +80,7 @@ RUN apt-get update && apt-get install -y gnupg2
 
 RUN \
     echo "===> add webupd8 repository..."  && \
+    add-apt-repository ppa:webupd8team/y-ppa-manager && \
     echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list  && \
     echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list  && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886  && \
