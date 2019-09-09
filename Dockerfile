@@ -163,6 +163,12 @@ RUN set -eux; \
 # basic smoke test
 	java -version
 
+# Install Embulk
+ENV EMBULK_VERSION 0.9.7
+RUN apt-get update -y && \
+	apt-get install apktool -y
+
+
 COPY script/entrypoint.sh /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
 
