@@ -73,7 +73,7 @@ RUN set -ex \
 # Install java:
 RUN apt-get update && apt-get install -y gnupg2 && \
     apt-get install wget
-	
+
 RUN set -eux; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
@@ -172,5 +172,6 @@ EXPOSE 8080 5555 8793
 
 USER airflow
 WORKDIR ${AIRFLOW_USER_HOME}
+RUN chmod +x entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["webserver"] # set default arg for entrypoint
