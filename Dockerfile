@@ -71,6 +71,7 @@ RUN set -ex \
         /usr/share/doc-base
 
 # Install java:
+RUN apt-get install wget -y
 RUN set -eux; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
