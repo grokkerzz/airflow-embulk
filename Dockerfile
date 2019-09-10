@@ -169,7 +169,7 @@ RUN wget "https://dl.embulk.org/embulk-latest.jar" -O /usr/bin/embulk && chmod +
 
 # Embulk puglins:
 RUN embulk gem install embulk-input-mysql
-RUN embulk gem install embulk-input-postgresql
+RUN embulk gem install embulk-output-postgresql
 RUN embulk gem install embulk-parser-csv_with_schema_file
 
 
