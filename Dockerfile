@@ -165,10 +165,8 @@ RUN set -eux; \
 
 # Install Embulk
 ENV EMBULK_VERSION 0.9.7
-RUN	curl --create-dirs -o ~/.embulk/bin/embulk -L "https://dl.embulk.org/embulk-latest.jar" && \
-	chmod +x ~/.embulk/bin/embulk && \
-	echo 'export PATH="$HOME/.embulk/bin:$PATH"' >> ~/.bashrc
-	# source ~/.bashrc
+RUN wget "https://dl.embulk.org/embulk-latest.jar" -O /usr/bin/embulk && chmod +x /usr/bin/embulk
+
 # Embulk puglins:
 RUN embulk gem install embulk-input-mysql
 RUN embulk gem install embulk-input-postgresql
