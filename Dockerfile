@@ -17,6 +17,8 @@ ENV AIRFLOW_HOME=/usr/local/airflow
 RUN apt-get -y update
 RUN apt-get -y install openjdk-8-jdk libssl-dev openssl wget telnet git pigz \
     build-essential python3 python3-pip python3-dev libffi-dev libpq-dev
+ADD config/requirements.txt /tmp/requirements.txt
+RUN cp /usr/bin/python3 /usr/bin/python && pip3 install -r /tmp/requirements.txt && rm -rf /tmp/requirements.txt
 RUN wget "https://dl.embulk.org/embulk-${EMBULK_VERSION}.jar" -O /usr/bin/embulk && chmod +x /usr/bin/embulk
 RUN embulk gem install embulk-input-mysql
 RUN embulk gem install embulk-input-postgresql
@@ -32,12 +34,11 @@ COPY script/entrypoint.sh /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow.cfg
 
 RUN chown -R airflow: ${AIRFLOW_HOME}
-# RUN chmod +x /entrypoint.sh
 
 EXPOSE 8080 5555 8793
 
 USER airflow
 
-WORKDIR ${AIRFLOW_USER_HOME}
+WORKDIR ${AIRFLOW_HOME}
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["webserver"] # set default arg for entrypoint
+CMD ["webserver"]
