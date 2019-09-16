@@ -24,6 +24,7 @@ RUN embulk gem install embulk-input-s3
 RUN embulk gem install embulk-input-sftp
 RUN embulk gem install embulk-output-redshift
 RUN embulk gem install embulk-output-s3
+RUN embulk grm install embulk-output-postgresql
 RUN embulk gem install embulk-parser-csv_with_schema_file
 
 # Setup
