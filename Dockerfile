@@ -7,11 +7,12 @@ FROM ubuntu:16.04
 LABEL MAINTAINER phuong.nguyenhuucse@gmail.com
 
 # Set ENV:
+ARG AIRFLOW_USER_HOME=/usr/local/airflow
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ENV JAVA_PATH=${JAVA_HOME}/bin:$JAVA_PATH
 ENV EMBULK_VERSION 0.9.7
 ENV WORK_DIR=/palmer/
-ENV AIRFLOW_HOME=/usr/local/airflow
+ENV AIRFLOW_HOME=${AIRFLOW_USER_HOME}
 
 # Install dependencies:
 RUN apt-get -y update
@@ -32,14 +33,14 @@ RUN embulk gem install embulk-parser-csv_with_schema_file
 
 # Setup
 COPY script/entrypoint.sh /entrypoint.sh
-COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow.cfg
+COPY config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
 
-RUN chown -R airflow: ${AIRFLOW_HOME}
+RUN chown -R airflow: ${AIRFLOW_USER_HOME}
 
 EXPOSE 8080 5555 8793
 
 USER airflow
 
-WORKDIR ${AIRFLOW_HOME}
+WORKDIR ${AIRFLOW_USER_HOME}
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["webserver"]
