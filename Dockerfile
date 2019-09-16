@@ -16,7 +16,8 @@ ENV AIRFLOW_HOME=/usr/local/airflow
 # Install dependencies:
 RUN apt-get -y update
 RUN apt-get -y install openjdk-8-jdk libssl-dev openssl wget telnet git pigz \
-    build-essential python3 python3-pip python3-dev libffi-dev libpq-dev
+    build-essential python3 python3-pip python3-dev libffi-dev libpq-dev \
+    libmariadb-client-lgpl-dev && ln -s /usr/bin/mariadb_config /usr/bin/mysql_config
 ADD config/requirements.txt /tmp/requirements.txt
 RUN cp /usr/bin/python3 /usr/bin/python && pip3 install -r /tmp/requirements.txt && rm -rf /tmp/requirements.txt
 RUN wget "https://dl.embulk.org/embulk-${EMBULK_VERSION}.jar" -O /usr/bin/embulk && chmod +x /usr/bin/embulk
@@ -26,7 +27,7 @@ RUN embulk gem install embulk-input-s3
 RUN embulk gem install embulk-input-sftp
 RUN embulk gem install embulk-output-redshift
 RUN embulk gem install embulk-output-s3
-RUN embulk grm install embulk-output-postgresql
+RUN embulk gem install embulk-output-postgresql
 RUN embulk gem install embulk-parser-csv_with_schema_file
 
 # Setup
