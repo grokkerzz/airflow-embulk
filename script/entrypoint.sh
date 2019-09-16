@@ -8,7 +8,7 @@ TRY_LOOP="20"
 
 : "${POSTGRES_HOST:="postgres"}"
 : "${POSTGRES_PORT:="5432"}"
-: "${POSTGRES_USER:="airflow"}"
+: "${POSTGRES_USER:="root"}"
 : "${POSTGRES_PASSWORD:="airflow"}"
 : "${POSTGRES_DB:="airflow"}"
 
