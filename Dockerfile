@@ -39,8 +39,8 @@ RUN set -ex \
         curl \
         rsync \
         netcat \
-        locales
-RUN pip install -U pip setuptools wheel \
+        locales \
+    && pip install -U pip setuptools wheel \
     && pip install pytz \
     && pip install pyOpenSSL \
     && pip install ndg-httpsclient \
