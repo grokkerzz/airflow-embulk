@@ -35,7 +35,6 @@ RUN set -ex \
         $buildDeps \
         freetds-bin \
         build-essential \
-        default-libmysqlclient-dev \
         apt-utils \
         curl \
         rsync \
