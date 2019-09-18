@@ -40,12 +40,12 @@ RUN set -ex \
         rsync \
         netcat \
         locales \
-    && pip install -U pip setuptools wheel \
-    && pip install pytz \
-    && pip install pyOpenSSL \
-    && pip install ndg-httpsclient \
-    && pip install pyasn1 \
-    && pip install 'redis==3.2' \
+    && pip3 install -U pip setuptools wheel \
+    && pip3 install pytz \
+    && pip3 install pyOpenSSL \
+    && pip3 install ndg-httpsclient \
+    && pip3 install pyasn1 \
+    && pip3 install 'redis==3.2' \
     && apt-get purge --auto-remove -yqq $buildDeps \
     && apt-get autoremove -yqq --purge \
     && apt-get clean \
