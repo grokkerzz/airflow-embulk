@@ -40,7 +40,17 @@ RUN set -ex \
         curl \
         rsync \
         netcat \
-        locales
+        locales \
+    && apt-get purge --auto-remove -yqq $buildDeps \
+    && apt-get autoremove -yqq --purge \
+    && apt-get clean \
+    && rm -rf \
+        /var/lib/apt/lists/* \
+        /tmp/* \
+        /var/tmp/* \
+        /usr/share/man \
+        /usr/share/doc \
+        /usr/share/doc-base
 ADD config/requirements.txt /tmp/requirements.txt
 RUN cp /usr/bin/python3 /usr/bin/python && pip3 install -r /tmp/requirements.txt && rm -rf /tmp/requirements.txt
 RUN wget "https://dl.embulk.org/embulk-${EMBULK_VERSION}.jar" -O /usr/bin/embulk && chmod +x /usr/bin/embulk
