@@ -19,6 +19,26 @@ RUN apt-get -y update
 RUN apt-get -y install openjdk-8-jdk libssl-dev openssl wget telnet git pigz \
     build-essential python3 python3-pip python3-dev libffi-dev libpq-dev \
     libmariadb-client-lgpl-dev && ln -s /usr/bin/mariadb_config /usr/bin/mysql_config
+RUN set -ex \
+    && buildDeps=' \
+        freetds-dev \
+        libkrb5-dev \
+        libsasl2-dev \
+        libssl-dev \
+        libffi-dev \
+        libpq-dev \
+        git \
+    ' \
+    && apt-get install -yqq --no-install-recommends \
+        $buildDeps \
+        freetds-bin \
+        build-essential \
+        default-libmysqlclient-dev \
+        apt-utils \
+        curl \
+        rsync \
+        netcat \
+        locales
 ADD config/requirements.txt /tmp/requirements.txt
 RUN cp /usr/bin/python3 /usr/bin/python && pip3 install -r /tmp/requirements.txt && rm -rf /tmp/requirements.txt
 RUN wget "https://dl.embulk.org/embulk-${EMBULK_VERSION}.jar" -O /usr/bin/embulk && chmod +x /usr/bin/embulk
