@@ -39,7 +39,13 @@ RUN set -ex \
         curl \
         rsync \
         netcat \
-        locales \
+        locales
+RUN pip install -U pip setuptools wheel \
+    && pip install pytz \
+    && pip install pyOpenSSL \
+    && pip install ndg-httpsclient \
+    && pip install pyasn1 \
+    && pip install 'redis==3.2' \
     && apt-get purge --auto-remove -yqq $buildDeps \
     && apt-get autoremove -yqq --purge \
     && apt-get clean \
