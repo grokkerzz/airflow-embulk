@@ -2,11 +2,11 @@
 
 TRY_LOOP="20"
 
-: "${REDIS_HOST:="redis"}"
+: "${REDIS_HOST:="redis_host"}"
 : "${REDIS_PORT:="6379"}"
 : "${REDIS_PASSWORD:=""}"
 
-: "${POSTGRES_HOST:="postgres"}"
+: "${POSTGRES_HOST:="postgres_host"}"
 : "${POSTGRES_PORT:="5432"}"
 : "${POSTGRES_USER:="airflow"}"
 : "${POSTGRES_PASSWORD:="airflow"}"
