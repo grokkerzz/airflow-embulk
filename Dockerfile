@@ -20,7 +20,6 @@ ENV PYTHON_VERSION 3.7
 RUN apt-get clean -yqq && apt-get remove -yqq
 RUN apt-get update -yqq && apt-get upgrade -yqq
 RUN apt-get -y install curl
-# RUN apt-get -y install build-essential python3.7 && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 && apt-get remove python3-apt -yqq
 RUN apt-get -yqq install software-properties-common
 RUN apt-get -y install openjdk-8-jdk libssl-dev openssl wget telnet git pigz vim \
     python3-pip python3-apt python-dev python3-dev libffi-dev libpq-dev libxml2-dev libxslt1-dev zlib1g-dev \
@@ -33,6 +32,7 @@ RUN apt-get -y install openjdk-8-jdk libssl-dev openssl wget telnet git pigz vim
     && useradd -ms /bin/bash -d ${REPO_FOLDER} airflow
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 RUN apt-add-repository https://packages.microsoft.com/ubuntu/18.04/prod
+RUN apt-get -y install build-essential python3.7 && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 && apt-get remove python3-apt -yqq
 RUN apt-get update -y
 RUN ACCEPT_EULA=Y apt-get install -y msodbcsql17 mssql-tools 
 
