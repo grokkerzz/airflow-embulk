@@ -32,7 +32,7 @@ RUN apt-get -y install openjdk-8-jdk libssl-dev openssl wget telnet git pigz vim
     && useradd -ms /bin/bash -d ${REPO_FOLDER} airflow
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 RUN apt-add-repository https://packages.microsoft.com/ubuntu/18.04/prod
-RUN apt-get -y install build-essential python3.7 && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1 && apt-get remove python3-apt -yqq
+RUN apt-get -y install build-essential python3.7 && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1
 RUN apt-get update -y
 RUN ACCEPT_EULA=Y apt-get install -y msodbcsql17 mssql-tools 
 
