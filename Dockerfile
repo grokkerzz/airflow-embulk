@@ -97,4 +97,4 @@ RUN apt-get update -y
 RUN apt-get install -y mongodb-org-tools=4.2.5
 
 
-
+RUN python3 --version
